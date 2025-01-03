@@ -19,10 +19,15 @@ typedef pair<double,double> Diem;
    cin>>O.x>>O.y>>r;
    cin>>A.x>>A.y;
    B=O;
+   if(bpkc(O,A) < r*r){
+      cout<<setprecision(3)<<fixed<<"("<<A.x<<", "<<A.y<<")";
+      return 0;
+   }
    while(fabs(A.x-B.x)>1e-4 || fabs(A.y-B.y)>1e-4){
       M.x = (A.x + B.x)/2;
       M.y = (A.y + B.y)/2;
       (bpkc(O,M)>r*r)?(A=M):(B=M);
    }
    cout<<setprecision(3)<<fixed<<"("<<A.x<<", "<<A.y<<")";
+   return 0;
  }
