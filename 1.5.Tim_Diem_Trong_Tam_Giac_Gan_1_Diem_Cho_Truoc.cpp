@@ -1,6 +1,4 @@
-//Tìm điểm trong Tam giác gần với 1 điểm cho trước nhất
-//Link bài: https://laptrinhonline.club/problem/tichpxtamgiac
-
+//Tìm di?m trong Tam giác g?n v?i 1 di?m cho tru?c nh?t
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -8,15 +6,15 @@ typedef pair<double,double> Diem;
 #define x first
 #define y second
 
- //Hàm tính diện tích tam giác biết tọa đọ 3 điểm
+ //Hàm tính di?n tích tam giác bi?t t?a d? 3 di?m
  double S(Diem A, Diem B, Diem C){
     return (1.0/2.0) * fabs((B.x-A.x)*(C.y-A.y) - (C.x-A.x)*(B.y-A.y));
  }
- //Hàm tính bình phương khoảng cách
+ //Hàm tính bình phuong kho?ng cách
  double bpkc(Diem A, Diem B){
     return pow(A.x-B.x,2)+pow(A.y-B.y,2);
  }
- //Hàm tìm điểm thuộc AB có khoảng cách gần nhất với M
+ //Hàm tìm di?m thu?c AB có kho?ng cách g?n nh?t v?i M
  Diem dgn(Diem A, Diem B, Diem M){
     Diem C;
     while(fabs(A.x-B.x)>1e-4 || fabs(A.y-B.y)>1e-4){
@@ -29,6 +27,7 @@ typedef pair<double,double> Diem;
 
  int main(){
     int n;
+    cin>>n;
     Diem A,B,C,M;
     for(int i=0;i<n;i++){
         cin>>A.x>>A.y>>B.x>>B.y>>C.x>>C.y>>M.x>>M.y;
@@ -36,9 +35,9 @@ typedef pair<double,double> Diem;
             cout<<setprecision(3)<<fixed<<M.x<<" "<<M.y<<endl;
         }else{
             Diem D,E,F;
-            D = dgn(A,B,M); // Điểm thuộc AB có khoảng cách gần nhất đến M
-            E = dgn(A,C,M); // Điểm thuộc AC có khoảng cách gần nhất đến M
-            F = dgn(B,C,M); // Điểm thuộc BC có khoảng cách gần nhất đến M
+            D = dgn(A,B,M); // Ði?m thu?c AB có kho?ng cách g?n nh?t d?n M
+            E = dgn(A,C,M); // Ði?m thu?c AC có kho?ng cách g?n nh?t d?n M
+            F = dgn(B,C,M); // Ði?m thu?c BC có kho?ng cách g?n nh?t d?n M
             double min_kc = sqrt(bpkc(D,M));
             Diem nearest_point = D;
             if(min_kc > sqrt(bpkc(E,M))){
